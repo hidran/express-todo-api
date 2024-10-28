@@ -11,6 +11,7 @@ services:
       - DB_USER=root
       - DB_PASSWORD=hidran123
       - DB_NAME=todo_db
+      - DB_PORT=3306
       - PORT=5000
     depends_on:
       - mysql  # Wait for MySQL to be ready before starting the app
@@ -21,7 +22,7 @@ services:
     image: mysql:latest
     container_name: mysql
     ports:
-      - "3306:3306"  # Map port 3306 on the host to 3306 in the container
+      - "3309:3306"  # Map port 3306 on the host to 3306 in the container
     environment:
       restart: always
       MYSQL_ROOT_PASSWORD: hidran123

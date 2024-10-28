@@ -1,5 +1,20 @@
 {
     "cSpell.words": [
         "expressjs"
+    ],
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3309,
+            "driver": "MySQL",
+            "name": "localhost3609",
+            "database": "todo_db",
+            "username": "root"
+        }
     ]
 }
