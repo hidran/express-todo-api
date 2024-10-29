@@ -8,7 +8,7 @@ const Todo = {
         );
         return result.insertId;
     },
-    async remove(id, userId) {
+    async remove(id) {
         const sql = 'DELETE FROM todos where id=?';
         const [result] = await db.execute(sql, [id]
         );
@@ -28,7 +28,7 @@ const Todo = {
         return rows;
     } ,
     
-    async getTodoById(id,userId){
+    async getTodoById(id){
         const sql = 'SELECT * FROM todos WHERE id=?';
         const [rows] = await db.query(sql, [id]);
         return rows;
