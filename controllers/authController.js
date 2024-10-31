@@ -16,7 +16,7 @@ const register = async (req,res) => {
         }
     const userId = await User.create(name, email, password);
     const secret = process.env.JWT_SECRET || 'dsfsdfdsfsfdsf4332432432432432432';
-    const ttl = process.env.JWT_TTL ;
+        const ttl = Number(process.env.JWT_TTL);
     const token = jwt.sign({ id: userId, email },
          secret,
         { expiresIn:ttl}
@@ -41,13 +41,13 @@ const login = async (req, res) =>{
     }
 
     const secret = process.env.JWT_SECRET || 'dsfsdfdsfsfdsf4332432432432432432';
-    const ttl = process.env.JWT_TTL;
+    const ttl = Number(process.env.JWT_TTL);
     const token = jwt.sign({ id: user.id,email: user.email },
         secret,
         { expiresIn: ttl }
     );
     const expiryDate = new Date(Date.now() + ttl * 1000);
-   return successResponse(res, { token, expiresAt: expiryDate });
+   return successResponse(res, { token, expiresAt: expiryDate});
     } catch (error) {
         console.error('Error logging in user:', error);
        return errorResponse(res, 'Error logging in user', 500, error);

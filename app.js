@@ -5,10 +5,16 @@ app.use(express.json());
 const listRoutes = require('./routes/listRoutes');
 const todoRoutes = require('./routes/todoRoutes');
 const authRoutes = require('./routes/authRoutes');
-app.use('/api/lists', listRoutes);
-app.use('/api/todos', todoRoutes);
+const authMiddleware = require('./middleware/authMiddleware');
+
+    
+ 
+   
+
+app.use('/api/lists',authMiddleware, listRoutes);
+app.use('/api/todos', authMiddleware, todoRoutes);
 app.use('/api/auth', authRoutes);
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT,() => {
 console.log("listening on port" + PORT);

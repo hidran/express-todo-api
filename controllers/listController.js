@@ -5,7 +5,7 @@ const { successResponse, errorResponse } = require('../utils/responseHelper');
  * Get all lists for a specific user.
  */
 const getUserLists = async (req, res) => {
-    const userId = 1; // Replace with req.user.id in a real app
+    const userId = req.user.id; // Replace with req.user.id in a real app
 
     try {
         const lists = await List.findAllByUserId(userId);
@@ -20,7 +20,7 @@ const getUserLists = async (req, res) => {
  * Get a list by ID.
  */
 const getListById = async (req, res) => {
-    const userId = 1;
+    const userId = req.user.id;
     const { id } = req.params;
 
     try {
@@ -42,7 +42,7 @@ const getListById = async (req, res) => {
  */
 const createList = async (req, res) => {
     const { name } = req.body;
-    const userId = 1;
+    const userId = req.user.id;
 
     try {
         const listId = await List.create(name, userId);
@@ -59,7 +59,7 @@ const createList = async (req, res) => {
 const updateList = async (req, res) => {
     const { name } = req.body;
     const { id } = req.params;
-    const userId = 1;
+    const userId = req.user.id;
 
     try {
         const affectedRows = await List.update({ name, id, userId });
@@ -80,7 +80,7 @@ const updateList = async (req, res) => {
  */
 const deleteList = async (req, res) => {
     const { id } = req.params;
-    const userId = 1;
+    const userId = req.user.id;
 
     try {
         const affectedRows = await List.remove(id, userId);
