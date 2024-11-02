@@ -6,10 +6,14 @@ const listRoutes = require('./routes/listRoutes');
 const todoRoutes = require('./routes/todoRoutes');
 const authRoutes = require('./routes/authRoutes');
 const authMiddleware = require('./middleware/authMiddleware');
+const cors = require('cors');
+const corsOptions = {
+    origin: process.env.CORS_ALLOW_ORIGINS.split(','),
+    methods: process.env.CORS_ALLOW_METHODS,
+    credentials: true
 
-    
- 
-   
+};
+app.use(cors(corsOptions));
 
 app.use('/api/lists',authMiddleware, listRoutes);
 app.use('/api/todos', authMiddleware, todoRoutes);

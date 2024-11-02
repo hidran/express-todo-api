@@ -22,7 +22,7 @@ const register = async (req,res) => {
         { expiresIn:ttl}
         );
         const expiryDate = new Date( Date.now() + ttl*1000);
-        successResponse(res, { token, expiresAt: expiryDate});
+        successResponse(res, { token, expiresAt: expiryDate, user:{id:userId, name, email}});
     }catch(error){
         errorResponse(res,"Error registering user", 500, error);
     }
