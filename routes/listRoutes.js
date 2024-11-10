@@ -7,6 +7,7 @@ router.get('/', getUserLists);
 router.get('/:id', getListById);
 router.post('/', createList);
 router.patch('/:id', updateList);
+router.put('/:id', updateList);
 router.delete('/:id', deleteList);
 
 module.exports = router;

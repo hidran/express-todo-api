@@ -47,7 +47,7 @@ const login = async (req, res) =>{
         { expiresIn: ttl }
     );
     const expiryDate = new Date(Date.now() + ttl * 1000);
-   return successResponse(res, { token, expiresAt: expiryDate});
+   return successResponse(res, { token, expiresAt: expiryDate, user:{id:user.id, name:user.name,email: user.email}});
     } catch (error) {
         console.error('Error logging in user:', error);
        return errorResponse(res, 'Error logging in user', 500, error);

@@ -5,7 +5,7 @@ const { successResponse, errorResponse } = require('../utils/responseHelper');
  * Get all todos for a specific list.
  */
 const getTodos = async (req, res) => {
-    const { listId } = req.body;
+    const { listId } = req.query;
 
     try {
         const todos = await Todo.findAllByListId(listId);

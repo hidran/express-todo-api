@@ -9,7 +9,7 @@ const authMiddleware = require('./middleware/authMiddleware');
 const cors = require('cors');
 const corsOptions = {
     origin: process.env.CORS_ALLOW_ORIGINS.split(','),
-    methods: process.env.CORS_ALLOW_METHODS,
+    methods: process.env.CORS_ALLOW_METHODS.split(','),
     credentials: true
 
 };
