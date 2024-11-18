@@ -1,0 +1,25 @@
+# Production Dockerfile
+# Save this as `Dockerfile.prod`
+FROM node:18-slim
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install only production dependencies
+RUN npm ci --only=production
+
+# Install PM2 globally
+RUN npm install -g pm2
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the production port (via Railway's dynamic PORT variable)
+EXPOSE 5000
+ENV PORT=5000
+
+# Start the application with PM2
+CMD ["pm2-runtime", "start", "app.js"]
